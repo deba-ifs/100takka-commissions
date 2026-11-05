@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100takka - Commission Dashboard</title>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <nav class="bg-blue-900 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">100takka Commission Hub</h1>
+            <div class="space-x-4">
+                <button onclick="switchTab('dashboard')" class="hover:text-blue-300 transition">Dashboard</button>
+                <button onclick="switchTab('upload')" class="hover:text-blue-300 transition">Admin Upload</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto mt-8 p-4">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="block">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Current Commission Structures</h2>
+                <input type="text" id="searchInput" placeholder="Search AMC or Scheme..." class="p-2 border rounded-md w-64" onkeyup="filterTable()">
+            </div>
+            
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-gray-100 border-b">
+                        <tr>
+                            <th class="p-4 font-semibold text-gray-600">AMC Name</th>
+                            <th class="p-4 font-semibold text-gray-600">Category</th>
+                            <th class="p-4 font-semibold text-gray-600">Scheme Name</th>
+                            <th class="p-4 font-semibold text-gray-600">Comm. Rate (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y">
+                        <!-- Data injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Admin Upload Section -->
+        <section id="upload" class="hidden">
+            <div class="bg-white p-8 rounded-lg shadow max-w-md mx-auto">
+                <h2 class="text-xl font-bold mb-4">Upload New AMC PDF</h2>
+                <form id="uploadForm" class="space-y-4">
+                    <div class="border-2 border-dashed border-gray-300 p-6 rounded-md text-center">
+                        <input type="file" id="pdfFile" accept="application/pdf" class="w-full" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition" id="submitBtn">
+                        Upload & Process Data
+                    </button>
+                </form>
+                <div id="uploadStatus" class="mt-4 text-sm font-semibold hidden"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+</html>
